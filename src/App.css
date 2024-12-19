@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap");
+
+#quote-box {
+  width: 30%;
+  padding: 30px;
+  border-radius: 4px;
+  background-color: #fff;
+  border: 1px solid #cecece;
+  transition: color 0.3s ease-in-out;
+}
+
+#quote-box h2 {
+  font-family: "Merriweather", serif;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 27px;
+}
+
+#container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  transition: background-color 0.3s ease-in-out;
+}
+#author {
+  text-align: end;
+  font-family: "Merriweather", serif;
+  margin: 10px 0;
+}
+
+.links {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.links div {
+  display: inline-flex;
+  gap: 10px;
+}
+.links a {
+  padding: 7px 12px 5px 12px;
+  color: #fff;
+  border-radius: 3px;
+  transition: background-color 0.3s ease-in-out;
+}
+.links button {
+  appearance: none;
+  border: none;
+  color: #fff;
+  padding: 7px 12px;
+  border-radius: 3px;
+  font-family: "Merriweather", serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
