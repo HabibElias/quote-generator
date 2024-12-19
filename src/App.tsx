@@ -52,9 +52,16 @@ function App() {
   });
 
   useEffect(() => {
-    axios.get<quote>("http://api.quotable.io/random").then((res) => {
-      setQuote({ author: res.data.author, content: res.data.content });
-    });
+    fetch("http://api.quotable.io/random", {
+      headers: {
+        "Access-Control-Allow-Origin":
+          "https://quote-generator-phi-neon.vercel.app",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setQuote({ author: data.author, content: data.content });
+      });
   }, [color]);
 
   return (
