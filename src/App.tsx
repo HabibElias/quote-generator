@@ -52,7 +52,7 @@ function App() {
   });
 
   useEffect(() => {
-    axios.get<quote>("https://api.quotable.io/random").then((res) => {
+    axios.get<quote>("http://api.quotable.io/random").then((res) => {
       setQuote({ author: res.data.author, content: res.data.content });
     });
   }, [color]);
