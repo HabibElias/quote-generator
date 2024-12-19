@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { BiSolidQuoteLeft } from "react-icons/bi";
 import { FaTwitter, FaTumblr } from "react-icons/fa";
+import axios from "axios";
 import "./App.css";
 
 interface quote {
@@ -52,14 +52,15 @@ function App() {
   });
 
   useEffect(() => {
-    fetch("https://api.quotable.io/random", {
-      headers: {
-        "Access-Control-Allow-Origin":
-          "https://quote-generator-phi-neon.vercel.app/",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
+    axios
+      .get<quote>("https://api.quotable.io/random", {
+        headers: {
+          "Access-Control-Allow-Origin":
+            "https://quote-generator-phi-neon.vercel.app/",
+        },
+      })
+      .then((response) => {
+        const data = response.data;
         setQuote({ author: data.author, content: data.content });
       });
   }, [color]);
