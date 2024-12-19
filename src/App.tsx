@@ -52,7 +52,7 @@ function App() {
   });
 
   useEffect(() => {
-    fetch("http://api.quotable.io/random", {
+    fetch("https://api.quotable.io/random", {
       headers: {
         "Access-Control-Allow-Origin":
           "https://quote-generator-phi-neon.vercel.app/",
