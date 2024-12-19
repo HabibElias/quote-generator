@@ -55,7 +55,7 @@ function App() {
     fetch("http://api.quotable.io/random", {
       headers: {
         "Access-Control-Allow-Origin":
-          "https://quote-generator-phi-neon.vercel.app",
+          "https://quote-generator-phi-neon.vercel.app/",
       },
     })
       .then((response) => response.json())
