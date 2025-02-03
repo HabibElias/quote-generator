@@ -1,8 +1,8 @@
-#**Random Quote Generator**
+# **Random Quote Generator**
 - Generates random a quote with the author.
 
-###Used Tech stack
+### Used Tech stack
 - React, axios
 
-###Deployment link
+### Deployment link
 https://quote-generator-phi-neon.vercel.app/
