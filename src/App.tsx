@@ -3,11 +3,8 @@ import { BiSolidQuoteLeft } from "react-icons/bi";
 import { FaTwitter, FaTumblr } from "react-icons/fa";
 import axios from "axios";
 import "./App.css";
-
-interface quote {
-  author: string;
-  content: string;
-}
+import Quote from "./Entities/Quote";
+import apiClient from "./services/api-client";
 
 function App() {
   const colors = [
@@ -52,16 +49,20 @@ function App() {
   });
 
   useEffect(() => {
-    axios
-      .get<quote>("https://api.quotable.io/random", {
-        headers: {
-          "Access-Control-Allow-Origin":
-            "https://quote-generator-phi-neon.vercel.app/",
-        },
+    apiClient
+      .get<Quote>("/quotes/random/")
+      .then((res) => {
+        setQuote({
+          author: res.data.originator.name,
+          content: res.data.content,
+        });
       })
-      .then((response) => {
-        const data = response.data;
-        setQuote({ author: data.author, content: data.content });
+      .catch((err) => {
+        if (axios.isCancel(err)) {
+          console.log("Request canceled", err.message);
+        } else {
+          console.error("Error fetching quote", err);
+        }
       });
   }, [color]);
 
@@ -73,20 +74,17 @@ function App() {
           <h2 id="text">{quote.content}</h2>
           <p id="author">- {quote.author}</p>
           <div className="links">
-            {/* <div id="tweet-quote">
-              <FaTwitter />
-            </div> */}
             <div>
               <a
                 style={{ backgroundColor: color }}
-                href="twitter.com/intent/tweet"
+                href="https://twitter.com/intent/tweet"
                 id="tweet-quote"
               >
                 <FaTwitter />
               </a>
               <a
                 style={{ backgroundColor: color }}
-                href="timber.com/intent/tweet"
+                href="https://timber.com/"
                 id="timber-quote"
               >
                 <FaTumblr />
